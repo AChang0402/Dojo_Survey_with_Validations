@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+</head>
+<style>
+    * {
+        margin:0;
+        padding: 0
+    }
+
+    .form {
+        width: fit-content;
+        margin: 25px auto;
+        padding: 50px;
+        border: 3px solid black
+    }
+
+    .margintb{
+        margin: 10px 0;
+    }
+
+</style>
+<body>
+    <div class="form">
+        <h1>Submit Your Information</h1>
+        <form action="/process" method="post">
+            <p>
+                Your Name: <input type="text" name="name" class = "margintb">
+            </p>
+            <p>
+                Dojo location: 
+                <select name="location" class = "margintb">
+                    <option value="Seattle, WA">Seattle, WA</option>
+                    <option value="Chicago, IL">Chicago, IL</option>
+                    <option value="New York, NY">New York, NY</option>
+                    <option value="Los Angeles, CA">Los Angeles, CA</option>
+                    <option value="Austin, TX">Austin, TX</option>
+                    <option value="Miami, FL">Miami, FL</option>
+                </select>
+            </p>
+            <p>
+                Favorite language: 
+                <select name="language" class = "margintb">
+                    <option value="Python">Python</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="Javascript">Javascript</option>
+                    <option value="C#">C#</option>
+                </select>
+            </p>
+            <input type="checkbox" name="webfund" value="Passed Web Fundamentals">
+            <label for="webfund"> Passed Web Fundamentals</label><br>
+            <input type="checkbox" name="python" value="Passed Python">
+            <label for="python"> Passed Python</label><br>
+            <div class = "margintb">
+                <p>Comment (optional):</p>
+                <input type="text" name="comment">
+                <p><button class = "margintb">Submit</button></p>
+            </div>
+            <div class="margintb">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </form>
+    </div>
+</body>
+</html>
